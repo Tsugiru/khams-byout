@@ -23,5 +23,8 @@ jobs:
           name: Gatsby Build
           command: npm run build
       - run:
+          name: Firebase install
+          command: npm install -g firebase-tools
+      - run:
           name: Firebase Deploy
           command: firebase deploy --token "$FIREBASE_TOKEN"
