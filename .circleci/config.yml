@@ -16,6 +16,7 @@ jobs:
           name: Install Dependencies
           command: npm install
       - persist_to_workspace:
+          root: .
           path: 
             - node_modules
       - save_cache:
