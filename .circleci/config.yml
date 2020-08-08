@@ -19,6 +19,10 @@ jobs:
           key: v1-npm-deps-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - persist_to_workspace:
+          root: .
+          path: 
+            - node_modules
       - run:
           name: Gatsby Build
           command: npm run build
