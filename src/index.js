@@ -1,26 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import * as firebase from 'firebase';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDMnSVg2p7HoReH7XkT8Wrpn6bzKzbdojY",
-  authDomain: "khams-byout.firebaseapp.com",
-  databaseURL: "https://khams-byout.firebaseio.com",
-  projectId: "khams-byout",
-  storageBucket: "khams-byout.appspot.com",
-  messagingSenderId: "152446630233",
-  appId: "1:152446630233:web:098f0914d6e8147204b448",
-  measurementId: "G-TYBFX2PW0L"
-};
-
-firebase.initializeApp(firebaseConfig);
+import App from './components/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
