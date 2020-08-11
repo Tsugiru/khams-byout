@@ -1,9 +1,14 @@
-version: 2
+version: 2.1
+
+executors:
+  kb-default-executor:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ~/khams-byout
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/gatsby-site
+    executor: kb-default-executor
     steps:
       - checkout
       - restore_cache:
@@ -20,11 +25,32 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Gatsby Build
+          name: Build
           command: npm run build
-      - run:
-          name: Firebase install
-          command: sudo npm install -g firebase-tools
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - build
+            - node_modules
+  
+  deploy:
+    executor: kb-default-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: Firebase Deploy
-          command: firebase deploy --token "$FIREBASE_TOKEN"
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build 
