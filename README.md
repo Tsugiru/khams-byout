@@ -1,4 +1,4 @@
-[![Tsugiru](https://circleci.com/gh/Tsugiru/khams-byout.svg?style=svg)](https://circleci.com/gh/Tsugiru/khams-byout)
+[![Tsugiru](https://circleci.com/gh/khams-byout/khams-byout.svg?style=svg)](https://circleci.com/gh/khams-byout/khams-byout)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
